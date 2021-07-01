@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:yuka/components/barre_code_button.dart';
+import 'package:yuka/components/img_top_detail.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
-import 'package:yuka/res/app_images.dart';
-import 'package:yuka/res/app_vectorial_images.dart';
-
-import 'layouts/homepage.dart';
 
 void main() {
   runApp(MyApp());
@@ -35,89 +30,36 @@ class ProductDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Theme.of(context).copyWith(
-        appBarTheme: AppBarTheme(
-          backgroundColor: AppColors.white,
-          elevation: 0.0,
-          centerTitle: false,
-          iconTheme: IconTheme.of(context).copyWith(
-            color: AppColors.blue,
+        data: Theme.of(context).copyWith(
+          appBarTheme: AppBarTheme(
+            backgroundColor: AppColors.white,
+            elevation: 0.0,
+            centerTitle: false,
+            iconTheme: IconTheme.of(context).copyWith(
+              color: AppColors.blue,
+            ),
           ),
         ),
-      ),
-      child: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          elevation: 0.0,
-          backgroundColor: Colors.transparent,
-          title: const Icon(Icons.arrow_back, color: AppColors.white),
-          actions: <Widget>[
-            Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    AppIcons.share,
-                    color: AppColors.white,
-                  ),
-                ))
-          ],
-        ),
-        body: FractionallySizedBox(
-          widthFactor: 1,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Image.asset(
-                AppImages.spaghetti,
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: 350.0,
-              ),
-              Positioned(
-                child: Padding(
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            elevation: 0.0,
+            backgroundColor: Colors.transparent,
+            title: const Icon(Icons.arrow_back, color: AppColors.white),
+            actions: <Widget>[
+              Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text('Panzani',
-                              style: TextStyle(
-                                  color: AppColors.gray2,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16.0)),
-                        ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text('Spagetties',
-                              style: TextStyle(
-                                color: AppColors.blue,
-                                fontWeight: FontWeight.w800,
-                                fontSize: 28.0,
-                              )),
-                        ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text('Pate bolo incroyable ptn',
-                              style: TextStyle(
-                                  color: AppColors.gray3,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16.0)),
-                        ),
-                      ],
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      AppIcons.share,
+                      color: AppColors.white,
                     ),
-                  ),
-                ),
-              ),
+                  ))
             ],
           ),
-        ),
-      ),
-    );
+          body: ImgTopDetail(),
+        ));
   }
 }
 
