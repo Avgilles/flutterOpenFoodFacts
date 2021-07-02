@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yuka/res/app_color.dart';
+import 'layouts/detail_cara.dart';
 import 'layouts/detail_fiche.dart';
 
 void main() {

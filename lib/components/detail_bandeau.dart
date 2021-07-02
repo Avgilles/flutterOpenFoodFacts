@@ -3,13 +3,41 @@ import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
 import 'package:yuka/res/app_images.dart';
 
+import '../product.dart';
+
 class BandeauDetail extends StatelessWidget {
+  // final ProductNutriscore nutriscoreLetter;
+  final String? groupTitle;
+  final String? groupText;
+
   const BandeauDetail({
+    // required this.nutriscoreLetter,
+    required this.groupTitle,
+    required this.groupText,
     Key? key,
   }) : super(key: key);
 
+  // String imgPath;
+
   @override
   Widget build(BuildContext context) {
+    // switch (nutriscoreLetter) {
+    //   case ProductNutriscore.A:
+    //     imgPath = AppImages.nutriscoreA;
+    //     break;
+    //   case ProductNutriscore.B:
+    //     imgPath = AppImages.nutriscoreA;
+    //     break;
+    //   case ProductNutriscore.C:
+    //     imgPath = AppImages.nutriscoreA;
+    //     break;
+    //   case ProductNutriscore.D:
+    //     imgPath = AppImages.nutriscoreA;
+    //     break;
+    //   case ProductNutriscore.E:
+    //     imgPath = AppImages.nutriscoreA;
+    //     break;
+    // }
     return Column(
       children: <Widget>[
         Container(
@@ -46,7 +74,7 @@ class BandeauDetail extends StatelessWidget {
                         children: <Widget>[
                           Align(
                             alignment: Alignment.centerLeft,
-                            child: Text('Groupe Nova',
+                            child: Text(groupTitle ?? 'Groupe Nova',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                     color: AppColors.blueDark,
@@ -56,7 +84,8 @@ class BandeauDetail extends StatelessWidget {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'Produit alimentaire et boissons ultra-transformés',
+                              groupText ??
+                                  'Produit alimentaire et boissons ultra-transformés',
                               textAlign: TextAlign.left,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(

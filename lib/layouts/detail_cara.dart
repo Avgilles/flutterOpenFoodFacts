@@ -7,8 +7,8 @@ import 'package:yuka/components/detail_realisation_data.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
 
-class DetailFiche extends StatelessWidget {
-  const DetailFiche({Key? key}) : super(key: key);
+class DetailCara extends StatelessWidget {
+  const DetailCara({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +46,7 @@ class DetailFiche extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   ImgTopDetail(),
-                  BandeauDetail(
-                    groupTitle:'groupe test',
-                    groupText:'test'
-                  ),
-                  RealisationDataDetail(),
-                  ButtonDetail(),
+
                 ],
               )),
         ));
