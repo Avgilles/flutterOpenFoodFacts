@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yuka/bandeau_detail.dart';
-import 'package:yuka/components/img_top_detail.dart';
 import 'package:yuka/res/app_color.dart';
-import 'package:yuka/res/app_icons.dart';
+import 'layouts/detail_fiche.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,56 +18,11 @@ class MyApp extends StatelessWidget {
         accentColor: AppColors.yellow,
       ),
       debugShowCheckedModeBanner: false,
-      home: ProductDetails(),
+      home: DetailFiche(),
     );
   }
 }
 
-class ProductDetails extends StatelessWidget {
-  const ProductDetails({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Theme(
-        data: Theme.of(context).copyWith(
-          appBarTheme: AppBarTheme(
-            backgroundColor: AppColors.white,
-            elevation: 0.0,
-            centerTitle: false,
-            iconTheme: IconTheme.of(context).copyWith(
-              color: AppColors.blue,
-            ),
-          ),
-        ),
-        child: Scaffold(
-          extendBodyBehindAppBar: true,
-          appBar: AppBar(
-            elevation: 0.0,
-            backgroundColor: Colors.transparent,
-            title: const Icon(Icons.arrow_back, color: AppColors.white),
-            actions: <Widget>[
-              Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      AppIcons.share,
-                      color: AppColors.white,
-                    ),
-                  ))
-            ],
-          ),
-          body: Container(
-              color: AppColors.white,
-              child: Column(
-                children: <Widget>[
-                  ImgTopDetail(),
-                  BandeauDetail(),
-                ],
-              )),
-        ));
-  }
-}
 
 /*
 class ProductDetails extends StatefulWidget {

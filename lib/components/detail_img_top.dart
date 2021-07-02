@@ -21,7 +21,7 @@ class ImgTopDetail extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.only(
-              top: 350.0,
+              top: 320.0,
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -33,7 +33,7 @@ class ImgTopDetail extends StatelessWidget {
                   margin: EdgeInsets.only(
                     left: 16,
                     right: 16,
-                    top: 24,
+                    top: 8,
                     bottom: 4
                   ),
                   child: Align(
@@ -67,7 +67,7 @@ class ImgTopDetail extends StatelessWidget {
                     left: 16,
                     right: 16,
                     top: 0,
-                    bottom: 24,
+                    bottom: 16,
                   ),
                   child: Align(
                     alignment: Alignment.centerLeft,

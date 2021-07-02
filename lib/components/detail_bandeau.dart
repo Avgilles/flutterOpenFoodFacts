@@ -13,7 +13,7 @@ class BandeauDetail extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(8.0),
           color: AppColors.gray1,
           child: IntrinsicHeight(
             child: Row(
@@ -21,7 +21,7 @@ class BandeauDetail extends StatelessWidget {
                 Expanded(
                   flex: 44,
                   child: Container(
-                    height: 64,
+                    height: 50,
                     child: Image.asset(
                       AppImages.nutriscoreA,
                       fit: BoxFit.contain,
@@ -74,60 +74,63 @@ class BandeauDetail extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          color: AppColors.gray1,
-          child: Column(
-            children: <Widget>[
-              Divider(
-                height: 5,
-                thickness: 1,
-                indent: 0,
-                endIndent: 0,
-                color: AppColors.gray2,
-              ),
-              Container(
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'EcoScore',
-                      style: TextStyle(
-                        color: AppColors.blue,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            color: AppColors.gray1,
+            child: Column(
+              children: <Widget>[
+                Divider(
+                  height: 5,
+                  thickness: 1,
+                  indent: 0,
+                  endIndent: 0,
+                  color: AppColors.gray2,
                 ),
-              ),
-              Row(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                      AppIcons.ecoscoreA,
-                      color: AppColors.ecoScoreA,
-                    ),
-                  ),
-                  Padding(
+                Container(
+                  width: double.infinity,
+                  child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'EcoScore',
                         style: TextStyle(
-                          color: AppColors.gray2,
-                          fontSize: 16,
+                          color: AppColors.blue,
+                          fontSize: 20,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
-            ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(
+                        AppIcons.ecoscoreA,
+                        color: AppColors.ecoScoreA,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'EcoScore',
+                          style: TextStyle(
+                            color: AppColors.gray2,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         )
       ],

@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:yuka/res/app_color.dart';
+import 'package:yuka/res/app_icons.dart';
 import 'package:yuka/res/app_vectorial_images.dart';
 
-import '../components/barre_code_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -33,7 +33,12 @@ class HomePage extends StatelessWidget {
           actions: <Widget>[
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: BarreCodeButton(),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  AppIcons.barcode,
+                ),
+              ),
             )
           ],
         ),
