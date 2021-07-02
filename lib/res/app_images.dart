@@ -1,4 +1,4 @@
-class AppImages {
+class  AppImages {
   AppImages._();
 
   static const String nutriscoreA = 'res/drawables/nutriscore_a.png';

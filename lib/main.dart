@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuka/bandeau_detail.dart';
 import 'package:yuka/components/img_top_detail.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
@@ -58,7 +59,14 @@ class ProductDetails extends StatelessWidget {
                   ))
             ],
           ),
-          body: ImgTopDetail(),
+          body: Container(
+              color: AppColors.white,
+              child: Column(
+                children: <Widget>[
+                  ImgTopDetail(),
+                  BandeauDetail(),
+                ],
+              )),
         ));
   }
 }

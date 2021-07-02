@@ -33,15 +33,15 @@ class ImgTopDetail extends StatelessWidget {
                   margin: EdgeInsets.only(
                     left: 16,
                     right: 16,
-                    top: 32,
-                    bottom: 8,
+                    top: 24,
+                    bottom: 4
                   ),
                   child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text('Spagetties',
+                    child: Text('Spaghetti',
                         style: TextStyle(
                           color: AppColors.blue,
-                          fontWeight: FontWeight.w800,
+                          fontWeight: FontWeight.w700,
                           fontSize: 28.0,
                         )),
                   ),
@@ -50,24 +50,24 @@ class ImgTopDetail extends StatelessWidget {
                   margin: EdgeInsets.only(
                     left: 16,
                     right: 16,
-                    top: 8,
-                    bottom: 8,
+                    top: 0,
+                    bottom: 4,
                   ),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text('Panzani',
                         style: TextStyle(
                             color: AppColors.gray2,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16.0)),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20.0)),
                   ),
                 ),
                 Container(
                   margin: EdgeInsets.only(
                     left: 16,
                     right: 16,
-                    top: 8,
-                    bottom: 8,
+                    top: 0,
+                    bottom: 24,
                   ),
                   child: Align(
                     alignment: Alignment.centerLeft,
