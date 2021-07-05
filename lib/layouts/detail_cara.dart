@@ -1,14 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:yuka/components/detail_bandeau.dart';
-import 'package:yuka/components/detail_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yuka/components/bloc_prof.dart';
 import 'package:yuka/components/detail_img_top.dart';
-import 'package:yuka/components/detail_realisation_data.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
 
-class DetailCara extends StatelessWidget {
-  const DetailCara({Key? key}) : super(key: key);
+// import '../product.dart';
+
+class DetailNutri extends StatelessWidget {
+  final String barcode;
+
+  const DetailNutri({required this.barcode});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class DetailCara extends StatelessWidget {
             elevation: 0.0,
             centerTitle: false,
             iconTheme: IconTheme.of(context).copyWith(
-              color: AppColors.blue,
+              color: AppColors.white,
             ),
           ),
         ),
@@ -28,12 +31,13 @@ class DetailCara extends StatelessWidget {
           appBar: AppBar(
             elevation: 0.0,
             backgroundColor: Colors.transparent,
-            title: const Icon(Icons.arrow_back, color: AppColors.white),
             actions: <Widget>[
               Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     icon: const Icon(
                       AppIcons.share,
                       color: AppColors.white,
@@ -41,14 +45,294 @@ class DetailCara extends StatelessWidget {
                   ))
             ],
           ),
-          body: Container(
-              color: AppColors.white,
-              child: Column(
-                children: <Widget>[
-                  ImgTopDetail(),
-
-                ],
-              )),
+          body: BlocProvider<ProductBloc>(
+            create: (_) {
+              ProductBloc productBloc = ProductBloc();
+              productBloc.fetchProduct(barcode);
+              return productBloc;
+            },
+            child: BlocBuilder<ProductBloc, ProductState>(
+                builder: (BuildContext context, ProductState state) {
+              if (state.product == null) {
+                return Center(child: CircularProgressIndicator());
+              } else {
+                return SingleChildScrollView(
+                  child: Container(
+                      color: AppColors.white,
+                      child: Column(
+                        children: <Widget>[
+                          ImgTopDetail(),
+                          IntrinsicHeight(
+                              child: Column(children: <Widget>[
+                            /*---1---*/
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 16.0,
+                                bottom: 16.0,
+                              ),
+                              child: Row(children: <Widget>[
+                                Spacer(
+                                  flex: 5,
+                                ),
+                                Expanded(
+                                  flex: 45,
+                                  child: Text('Matière grasse / lipides ',
+                                      style: TextStyle(
+                                          fontSize: 20.0,
+                                          color: AppColors.blueDark)),
+                                ),
+                                Expanded(
+                                  flex: 45,
+                                  child: Column(children: <Widget>[
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text('0,8g',
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              color: AppColors.nutriscoreA)),
+                                    ),
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text('Faible quantité',
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              color: AppColors.nutriscoreA)),
+                                    )
+                                  ]),
+                                ),
+                                Spacer(
+                                  flex: 5,
+                                ),
+                              ]),
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Spacer(
+                                  flex: 5,
+                                ),
+                                Expanded(
+                                  flex: 90,
+                                  child: Divider(
+                                    height: 1,
+                                    thickness: 1,
+                                    indent: 0,
+                                    endIndent: 0,
+                                    color: AppColors.gray2,
+                                  ),
+                                ),
+                                Spacer(
+                                  flex: 5,
+                                ),
+                              ],
+                            ),
+                            /*___2___*/
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 16.0,
+                                bottom: 16.0,
+                              ),
+                              child: Row(children: <Widget>[
+                                Spacer(
+                                  flex: 5,
+                                ),
+                                Expanded(
+                                  flex: 45,
+                                  child: Text('Matière grasse / lipides ',
+                                      style: TextStyle(
+                                          fontSize: 20.0,
+                                          color: AppColors.blueDark)),
+                                ),
+                                Expanded(
+                                  flex: 45,
+                                  child: Column(children: <Widget>[
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text('0,8g',
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              color: AppColors.nutriscoreA)),
+                                    ),
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text('Faible quantité',
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              color: AppColors.nutriscoreA)),
+                                    )
+                                  ]),
+                                ),
+                                Spacer(
+                                  flex: 5,
+                                ),
+                              ]),
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Spacer(
+                                  flex: 5,
+                                ),
+                                Expanded(
+                                  flex: 90,
+                                  child: Divider(
+                                    height: 1,
+                                    thickness: 1,
+                                    indent: 0,
+                                    endIndent: 0,
+                                    color: AppColors.gray2,
+                                  ),
+                                ),
+                                Spacer(
+                                  flex: 5,
+                                ),
+                              ],
+                            ),
+                            /*---3---*/
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 16.0,
+                                bottom: 16.0,
+                              ),
+                              child: Row(children: <Widget>[
+                                Spacer(
+                                  flex: 5,
+                                ),
+                                Expanded(
+                                  flex: 45,
+                                  child: Text('Matière grasse / lipides ',
+                                      style: TextStyle(
+                                          fontSize: 20.0,
+                                          color: AppColors.blueDark)),
+                                ),
+                                Expanded(
+                                  flex: 45,
+                                  child: Column(children: <Widget>[
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text('0,8g',
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              color: AppColors.nutriscoreA)),
+                                    ),
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text('Faible quantité',
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              color: AppColors.nutriscoreA)),
+                                    )
+                                  ]),
+                                ),
+                                Spacer(
+                                  flex: 5,
+                                ),
+                              ]),
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Spacer(
+                                  flex: 5,
+                                ),
+                                Expanded(
+                                  flex: 90,
+                                  child: Divider(
+                                    height: 1,
+                                    thickness: 1,
+                                    indent: 0,
+                                    endIndent: 0,
+                                    color: AppColors.gray2,
+                                  ),
+                                ),
+                                Spacer(
+                                  flex: 5,
+                                ),
+                              ],
+                            ),
+                            /*---4---*/
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 16.0,
+                                bottom: 16.0,
+                              ),
+                              child: Row(children: <Widget>[
+                                Spacer(
+                                  flex: 5,
+                                ),
+                                Expanded(
+                                  flex: 45,
+                                  child: Text('Matière grasse / lipides ',
+                                      style: TextStyle(
+                                          fontSize: 20.0,
+                                          color: AppColors.blueDark)),
+                                ),
+                                Expanded(
+                                  flex: 45,
+                                  child: Column(children: <Widget>[
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text('0,8g',
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              color: AppColors.nutriscoreA)),
+                                    ),
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text('Faible quantité',
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              color: AppColors.nutriscoreA)),
+                                    )
+                                  ]),
+                                ),
+                                Spacer(
+                                  flex: 5,
+                                ),
+                              ]),
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Spacer(
+                                  flex: 5,
+                                ),
+                                Expanded(
+                                  flex: 90,
+                                  child: Divider(
+                                    height: 1,
+                                    thickness: 1,
+                                    indent: 0,
+                                    endIndent: 0,
+                                    color: AppColors.gray2,
+                                  ),
+                                ),
+                                Spacer(
+                                  flex: 5,
+                                ),
+                              ],
+                            ),
+                          ])),
+                        ],
+                      )),
+                );
+              }
+            }),
+          ),
         ));
   }
 }
+/*
+class ProductHolder extends InheritedWidget {
+  final Product product;
+
+  const ProductHolder({
+    required this.product,
+    required Widget child,
+    Key? key,
+  }) : super(key: key, child: child);
+
+  static ProductHolder? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<ProductHolder>();
+  }
+
+  @override
+  bool updateShouldNotify(ProductHolder old) => product != old.product;
+}
+*/

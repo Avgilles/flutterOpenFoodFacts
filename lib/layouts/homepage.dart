@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:yuka/res/app_color.dart';
-import 'package:yuka/res/app_icons.dart';
 import 'package:yuka/res/app_vectorial_images.dart';
+
+import 'detail_fiche.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -25,23 +26,6 @@ class HomePage extends StatelessWidget {
         ),
       ),
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Mes scans',
-            style: TextStyle(color: primaryColor),
-          ),
-          actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  AppIcons.barcode,
-                ),
-              ),
-            )
-          ],
-        ),
         body: Center(
           child: FractionallySizedBox(
             widthFactor: 0.8,
@@ -62,7 +46,12 @@ class HomePage extends StatelessWidget {
                   height: 20.0,
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute<dynamic>(builder: (BuildContext context) => DetailFiche(barcode: '12345',)),
+                    );
+                  },
+
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20.0,

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yuka/components/bloc_prof.dart';
 import 'package:yuka/components/detail_bandeau.dart';
 import 'package:yuka/components/detail_button.dart';
 import 'package:yuka/components/detail_img_top.dart';
@@ -7,8 +9,13 @@ import 'package:yuka/components/detail_realisation_data.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
 
+// import '../product.dart';
+
 class DetailFiche extends StatelessWidget {
-  const DetailFiche({Key? key}) : super(key: key);
+
+  final String barcode;
+
+  const DetailFiche({required this.barcode});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +26,7 @@ class DetailFiche extends StatelessWidget {
             elevation: 0.0,
             centerTitle: false,
             iconTheme: IconTheme.of(context).copyWith(
-              color: AppColors.blue,
+              color: AppColors.white,
             ),
           ),
         ),
@@ -28,12 +35,13 @@ class DetailFiche extends StatelessWidget {
           appBar: AppBar(
             elevation: 0.0,
             backgroundColor: Colors.transparent,
-            title: const Icon(Icons.arrow_back, color: AppColors.white),
             actions: <Widget>[
               Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     icon: const Icon(
                       AppIcons.share,
                       color: AppColors.white,
@@ -41,19 +49,53 @@ class DetailFiche extends StatelessWidget {
                   ))
             ],
           ),
-          body: Container(
-              color: AppColors.white,
-              child: Column(
-                children: <Widget>[
-                  ImgTopDetail(),
-                  BandeauDetail(
-                    groupTitle:'groupe test',
-                    groupText:'test'
-                  ),
-                  RealisationDataDetail(),
-                  ButtonDetail(),
-                ],
-              )),
+          body: BlocProvider<ProductBloc>(
+            create:(_) {
+              ProductBloc productBloc = ProductBloc();
+              productBloc.fetchProduct(barcode);
+              return productBloc;
+            },
+            child:BlocBuilder<ProductBloc, ProductState>(
+                builder: (BuildContext context, ProductState state){
+                  if(state.product == null) {
+                    return Center(
+                      child: CircularProgressIndicator()
+                    );
+                  } else {
+                    return SingleChildScrollView(
+                      child: Container(
+                          color: AppColors.white,
+                          child: Column(
+                            children: <Widget>[
+                              ImgTopDetail(),
+                              BandeauDetail(),
+                              RealisationDataDetail(),
+                              ButtonDetail(),
+                            ],
+                          )),
+                    );
+                  }
+                }
+              ),
+          ),
         ));
   }
 }
+/*
+class ProductHolder extends InheritedWidget {
+  final Product product;
+
+  const ProductHolder({
+    required this.product,
+    required Widget child,
+    Key? key,
+  }) : super(key: key, child: child);
+
+  static ProductHolder? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<ProductHolder>();
+  }
+
+  @override
+  bool updateShouldNotify(ProductHolder old) => product != old.product;
+}
+*/

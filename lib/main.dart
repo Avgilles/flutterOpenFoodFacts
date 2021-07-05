@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:yuka/layouts/detail_fiche.dart';
 import 'package:yuka/res/app_color.dart';
+import 'package:yuka/res/app_icons.dart';
 import 'layouts/detail_cara.dart';
-import 'layouts/detail_fiche.dart';
+import 'layouts/homepage.dart';
+import 'layouts/tableau.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,12 +22,132 @@ class MyApp extends StatelessWidget {
         accentColor: AppColors.yellow,
       ),
       debugShowCheckedModeBanner: false,
-      home: DetailFiche(),
+      home: MyStatefulWidget(),
     );
   }
 }
 
+// enum ProductDetailsCurrentTab { summary, info, nutrition, nutritionalValues }
 
+/// This is the stateful widget that the main application instantiates.
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+/// This is the private State class that goes with MyStatefulWidget.
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    HomePage(),
+    DetailFiche(barcode: '12345',),
+    DetailNutri(barcode: '12345',),
+    DetailsScreen(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Color primaryColor = Theme.of(context).primaryColor;
+
+    return Theme(
+        data: Theme.of(context).copyWith(
+          appBarTheme: AppBarTheme(
+            backgroundColor: AppColors.white,
+            elevation: 0.0,
+            centerTitle: false,
+            iconTheme: IconTheme.of(context).copyWith(
+              color: primaryColor,
+            ),
+          ),
+        ),
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'Mes scans',
+              style: TextStyle(color: primaryColor),
+            ),
+            actions: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    AppIcons.barcode,
+                  ),
+                ),
+              )
+            ],
+          ),
+          body: Center(
+            child: _widgetOptions.elementAt(_selectedIndex),
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(AppIcons.tabBarcode),
+                label: 'Fiche',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(AppIcons.tabFridge),
+                label: 'Carateristiques',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(AppIcons.tabNutrition),
+                label: 'Nutrition',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(AppIcons.tabArray),
+                label: 'Tableau',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: AppColors.blue,
+            onTap: _onItemTapped,
+          ),
+        ));
+  }
+}
+
+/*class AppRoutes {
+  static const String homepage = '/';
+  static const String fiche = '/fiche';
+  static const String carateristique = '/carateristique';
+  static const String nutrition = '/nutrition';
+  static const String tableau = '/tableau';
+  const AppRoutes._();
+  static Route<dynamic> getRoutes(RouteSettings settings) {
+    WidgetBuilder builder;
+    Uri route = Uri.parse(settings.name);
+    String routeName = settings.name;
+    Object arguments = settings.arguments;
+    switch (routeName) {
+      case routeHome:
+        builder = (BuildContext context) => HomePage();
+        break;
+      case routePost:
+      // Sous la forme (/post?id=123)
+        builder = (BuildContext context) =>
+            PostsViewerScreen(route.queryParameters['id']);
+        break;
+    }
+    return MaterialPageRoute<dynamic>(
+      builder: builder,
+      settings: settings,
+    );
+  }
+}
+*/
 /*
 class ProductDetails extends StatefulWidget {
   const ProductDetails({Key? key}) : super(key: key);
