@@ -39,105 +39,121 @@ class BandeauDetail extends StatelessWidget {
       return Column(
         children: <Widget>[
           Container(
-            padding: const EdgeInsets.all(8.0),
             color: AppColors.gray1,
             child: IntrinsicHeight(
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    flex: 44,
-                    child: Container(
-                      height: 50,
-                      child: Image.asset(
-                        AppImages.nutriscoreA,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 12,
-                    child: const VerticalDivider(
-                      width: 5,
-                      indent: 0,
-                      endIndent: 5,
-                      thickness: 1,
-                      color: AppColors.gray2,
-                    ),
-                  ),
-                  Expanded(
-                    flex: 44,
-                    child: Container(
-                        color: AppColors.gray1,
-                        child: Column(
-                          children: <Widget>[
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(state.product!.name! ,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      color: AppColors.blueDark,
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 16.0)),
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                    'Produit alimentaire et boissons ultra-transformés',
-                                textAlign: TextAlign.left,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  color: AppColors.gray2,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 12.0,
-                                ),
-                                maxLines: 2,
-                              ),
-                            ),
-                          ],
-                        )),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              color: AppColors.gray1,
-              child: Column(
-                children: <Widget>[
-                  Divider(
-                    height: 5,
-                    thickness: 1,
-                    indent: 0,
-                    endIndent: 0,
-                    color: AppColors.gray2,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top:24.0,
+                  left:16,
+                  bottom:24.0,
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 44,
                       child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text(
-                          'EcoScore',
-                          style: TextStyle(
-                            color: AppColors.blue,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
+                        child: Container(
+                          height: 64,
+                          child: Image.asset(
+                            AppImages.nutriscoreA,
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(
-                          AppIcons.ecoscoreA,
-                          color: AppColors.ecoScoreA,
+                    Expanded(
+                      flex: 12,
+                      child: const VerticalDivider(
+                        width: 5,
+                        indent: 0,
+                        endIndent: 5,
+                        thickness: 1,
+                        color: AppColors.gray2,
+                      ),
+                    ),
+                    Expanded(
+                      flex: 44,
+                      child: Container(
+                          color: AppColors.gray1,
+                          child: Column(
+                            children: <Widget>[
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(state.product!.name! ,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        fontFamily:'Avenir',
+                                        color: AppColors.blueDark,
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 20.0)),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                      'Produit alimentaire et boissons ultra-transformés',
+                                  textAlign: TextAlign.left,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontFamily:'Avenir',
+                                    color: AppColors.gray2,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16.0,
+                                  ),
+                                  maxLines: 2,
+                                ),
+                              ),
+                            ],
+                          )),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Divider(
+            height: 5,
+            thickness: 1,
+            indent: 0,
+            endIndent: 0,
+            color: AppColors.gray2,
+          ),
+          Container(
+            color: AppColors.gray1,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        left:16.0,
+                        right:16.0,
+                        top:24.0,
+                    ),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'EcoScore',
+                        style: TextStyle(
+                          color: AppColors.blue,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
                         ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left:16.0,
+                    right:16.0,
+                    bottom:24.0,
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        AppIcons.ecoscoreA,
+                        color: AppColors.ecoScoreA,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -155,8 +171,8 @@ class BandeauDetail extends StatelessWidget {
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           )
         ],

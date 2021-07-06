@@ -22,9 +22,10 @@ class RealisationDataDetail extends StatelessWidget {
               child: Text(
                 'Quantité',
                 style: TextStyle(
+                  fontFamily:'Avenir',
                   color: AppColors.blue,
                   fontSize: 20,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
@@ -32,10 +33,12 @@ class RealisationDataDetail extends StatelessWidget {
               flex: 2,
               child: Text(
                 '200g (égoutté 130g)',
+                textAlign: TextAlign.end,
                 style: TextStyle(
-                  color: AppColors.gray2,
+                  fontFamily:'Avenir',
+                  color: AppColors.gray3,
                   fontSize: 20,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
@@ -63,9 +66,10 @@ class RealisationDataDetail extends StatelessWidget {
               child: Text(
                 'Vendu',
                 style: TextStyle(
+                  fontFamily:'Avenir',
                   color: AppColors.blue,
                   fontSize: 20,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
@@ -73,10 +77,12 @@ class RealisationDataDetail extends StatelessWidget {
               flex: 2,
               child: Text(
                 'France',
+                textAlign: TextAlign.end,
                 style: TextStyle(
-                  color: AppColors.gray2,
+                  fontFamily:'Avenir',
+                  color: AppColors.gray3,
                   fontSize: 20,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),

@@ -3,7 +3,9 @@ import 'package:yuka/layouts/detail_fiche.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
 import 'layouts/detail_cara.dart';
+import 'layouts/detail_cara_1.dart';
 import 'layouts/homepage.dart';
+import 'layouts/tab.dart';
 import 'layouts/tableau.dart';
 
 void main() {
@@ -17,6 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        fontFamily : 'Avenir',
         primaryColor: AppColors.blue,
         primaryColorDark: AppColors.blueDark,
         accentColor: AppColors.yellow,
@@ -44,9 +47,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    DetailFiche(barcode: '12345',),
+    DetailCara1(barcode: '12345',),
     DetailNutri(barcode: '12345',),
-    DetailsScreen(),
+    TabDetail(barcode: '12345',),
   ];
 
   void _onItemTapped(int index) {

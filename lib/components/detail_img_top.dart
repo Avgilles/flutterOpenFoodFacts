@@ -46,6 +46,7 @@ class ImgTopDetail extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: Text(state.product!.name!,
                               style: TextStyle(
+                                fontFamily: 'Avenir',
                                 color: AppColors.blue,
                                 fontWeight: FontWeight.w700,
                                 fontSize: 28.0,
@@ -63,6 +64,7 @@ class ImgTopDetail extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: Text('test',
                               style: TextStyle(
+                                  fontFamily: 'Avenir',
                                   color: AppColors.gray2,
                                   fontWeight: FontWeight.w400,
                                   fontSize: 20.0)),
@@ -79,6 +81,7 @@ class ImgTopDetail extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: Text('Pate bolo incroyable ptn',
                               style: TextStyle(
+                                  fontFamily: 'Avenir',
                                   color: AppColors.gray3,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16.0)),
