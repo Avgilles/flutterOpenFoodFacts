@@ -1,5 +1,8 @@
 // En entrée
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yuka/network/network_api.dart';
+import 'package:yuka/network/network_product.dart';
 
 import '../product.dart';
 
@@ -39,10 +42,17 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     if (event is FetchProductEvent) {
       String barcode = event.barcode;
 
+      NetworkProduct networkProduct = await OpenFoodFactsAPI(
+        Dio(),
+        baseUrl: 'https://api.formation-android.fr/v2/',
+      ).findProduct(barcode: barcode);
+
+
+      // println(networkProduct.response?.manufacturingCountries);
       // Requête
       yield ProductAvailableState(Product(
         barcode: barcode,
-        name: 'Petits pois et carottes',
+        name: networkProduct.response!.name,
         brands: <String>['Cassegrain'],
         nutriScore: ProductNutriscore.A
       ));

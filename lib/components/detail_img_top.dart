@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_images.dart';
 
-import 'bloc_prof.dart';
+import 'bloc_product.dart';
 
 class ImgTopDetail extends StatelessWidget {
   const ImgTopDetail({

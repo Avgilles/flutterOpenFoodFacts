@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yuka/components/bloc_prof.dart';
+import 'package:yuka/components/bloc_product.dart';
 import 'package:yuka/components/detail_img_top.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
 
 // import '../product.dart';
 
+
 class DetailCara1 extends StatelessWidget {
 
-  final String barcode;
 
-  const DetailCara1({required this.barcode});
+  const DetailCara1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class DetailCara1 extends StatelessWidget {
           body: BlocProvider<ProductBloc>(
             create:(_) {
               ProductBloc productBloc = ProductBloc();
-              productBloc.fetchProduct(barcode);
+              productBloc.fetchProduct('5000159484695');
               return productBloc;
             },
             child:BlocBuilder<ProductBloc, ProductState>(

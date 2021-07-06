@@ -1,17 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yuka/components/bloc_prof.dart';
+import 'package:yuka/components/bloc_product.dart';
 import 'package:yuka/components/detail_img_top.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
 
-// import '../product.dart';
-
 class TabDetail extends StatelessWidget {
-  final String barcode;
 
-  const TabDetail({required this.barcode});
+  const TabDetail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +45,7 @@ class TabDetail extends StatelessWidget {
           body: BlocProvider<ProductBloc>(
             create: (_) {
               ProductBloc productBloc = ProductBloc();
-              productBloc.fetchProduct(barcode);
+              productBloc.fetchProduct('5000159484695');
               return productBloc;
             },
             child: BlocBuilder<ProductBloc, ProductState>(
@@ -78,8 +75,9 @@ class TabWidget extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: SingleChildScrollView(
             child: Table(
-              border: TableBorder.all(
-                color: AppColors.gray2,
+              border: TableBorder.symmetric(
+                inside: BorderSide(width:1, color:AppColors.gray2)
+                // color: AppColors.gray2,
               ),
               columnWidths: const <int, TableColumnWidth>{
                 0: FlexColumnWidth(6),
