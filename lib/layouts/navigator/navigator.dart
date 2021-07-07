@@ -17,7 +17,9 @@ import '../tab.dart';
 
 /// This is the stateful widget that the main application instantiates.
 class NavTab extends StatefulWidget {
-  const NavTab({Key? key}) : super(key: key);
+  const NavTab(/*required String barecode,*/{Key? key}) : super(key: key);
+
+
 
   @override
   State<NavTab> createState() => _NavTabState();
@@ -50,7 +52,7 @@ class _NavTabState extends State<NavTab> {
     return BlocProvider<ProductBloc>(
       create: (_) {
         ProductBloc productBloc = ProductBloc();
-        productBloc.fetchProduct('5000159484695');
+        productBloc.fetchProduct('5000159484695'/*this.barecode*/);
         return productBloc;
       },
       child: BlocBuilder<ProductBloc, ProductState>(
@@ -168,6 +170,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         quantity: apiGetProductResponse.response!.quantity,
         manufacturingCountries: apiGetProductResponse.response!.manufacturingCountries,
         nutriScore: apiGetProductResponse.response!.nutriScore,
+        ingredients: apiGetProductResponse.response!.ingredients!.ingredients,
         // ecoScore: apiGetProductResponse.response!.ecoScore,
       ));
     }

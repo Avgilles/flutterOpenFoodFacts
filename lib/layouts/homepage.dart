@@ -5,10 +5,23 @@ import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
 import 'package:yuka/res/app_vectorial_images.dart';
 import 'navigator/navigator.dart';
+// import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+
 
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
+
+
+  /// je ne pouvais pas tester avec mon téléphone
+  /*void barrecodeScanner(BuildContext context,
+  {String barecode = '5000159484695'}){
+    if(barecode = '-1'){
+      return;
+    }
+    NavTab.of(context).push(MaterialPageRoute<dynamic>(
+      builder: (BuildContext context) => NavTab(barecode: barecode)));
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +48,17 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () async {
+                  /*String barcode = await FlutterBarcodeScanner.scanBarcode(
+                      '#ff6566',
+                      'close',
+                      true,
+                      ScanMode.BARCODE);
+                  NavTab()*/
+                  Navigator.of(context).push(
+                    MaterialPageRoute<dynamic>(builder: (BuildContext context) => NavTab()),
+                  );
+                },
                 icon: const Icon(
                   AppIcons.barcode,
                 ),

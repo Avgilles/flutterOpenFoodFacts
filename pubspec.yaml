@@ -33,6 +33,7 @@ dependencies:
   dio: ^4.0.0
   retrofit: ^2.0.0
   json_annotation: ^4.0.1
+  flutter_barcode_scanner: ^2.0.0
 
 dev_dependencies:
   flutter_test:
