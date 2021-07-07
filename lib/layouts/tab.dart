@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuka/components/detail_img_top.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
-
-import 'navigator/navigator.dart';
 
 class TabDetail extends StatelessWidget {
 
@@ -154,21 +151,3 @@ class TabWidget extends StatelessWidget {
   }
 }
 
-/*
-class ProductHolder extends InheritedWidget {
-  final Product product;
-
-  const ProductHolder({
-    required this.product,
-    required Widget child,
-    Key? key,
-  }) : super(key: key, child: child);
-
-  static ProductHolder? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<ProductHolder>();
-  }
-
-  @override
-  bool updateShouldNotify(ProductHolder old) => product != old.product;
-}
-*/

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuka/layouts/navigator/navigator.dart';
+import 'package:yuka/network/api_product.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
 import 'package:yuka/res/app_images.dart';
@@ -15,27 +16,26 @@ class BandeauDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // switch (nutriscoreLetter) {
-    //   case ProductNutriscore.A:
-    //     imgPath = AppImages.nutriscoreA;
-    //     break;
-    //   case ProductNutriscore.B:
-    //     imgPath = AppImages.nutriscoreA;
-    //     break;
-    //   case ProductNutriscore.C:
-    //     imgPath = AppImages.nutriscoreA;
-    //     break;
-    //   case ProductNutriscore.D:
-    //     imgPath = AppImages.nutriscoreA;
-    //     break;
-    //   case ProductNutriscore.E:
-    //     imgPath = AppImages.nutriscoreA;
-    //     break;
-    // }
     return BlocBuilder<ProductBloc, ProductState>(
         builder: (BuildContext context, ProductState state) {
-      state.product!.nutriScore;
-
+          String? imgPath;
+          switch (state.product!.nutriScore) {
+            case APIProductNutriscore.A:
+                imgPath = AppImages.nutriscoreA;
+              break;
+            case APIProductNutriscore.B:
+                imgPath = AppImages.nutriscoreB;
+              break;
+            case APIProductNutriscore.C:
+                imgPath = AppImages.nutriscoreC;
+              break;
+            case APIProductNutriscore.D:
+                imgPath = AppImages.nutriscoreD;
+              break;
+            case APIProductNutriscore.E:
+                imgPath = AppImages.nutriscoreE;
+              break;
+          }
       return Column(
         children: <Widget>[
           Container(
@@ -56,7 +56,7 @@ class BandeauDetail extends StatelessWidget {
                         child: Container(
                           height: 64,
                           child: Image.asset(
-                            AppImages.nutriscoreA,
+                            imgPath!,
                             fit: BoxFit.contain,
                           ),
                         ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yuka/layouts/navigator/navigator.dart';
 import 'package:yuka/res/app_color.dart';
 
 class RealisationDataDetail extends StatelessWidget {
@@ -8,7 +10,9 @@ class RealisationDataDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
+    return BlocBuilder<ProductBloc, ProductState>(
+    builder: (BuildContext context, ProductState state) {
+      return IntrinsicHeight(
       child: Column(children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(
@@ -32,7 +36,7 @@ class RealisationDataDetail extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Text(
-                '200g (égoutté 130g)',
+                state.product!.quantity!,
                 textAlign: TextAlign.end,
                 style: TextStyle(
                   fontFamily:'Avenir',
@@ -76,7 +80,7 @@ class RealisationDataDetail extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Text(
-                'France',
+                state.product!.manufacturingCountries!.join(','),
                 textAlign: TextAlign.end,
                 style: TextStyle(
                   fontFamily:'Avenir',
@@ -90,5 +94,7 @@ class RealisationDataDetail extends StatelessWidget {
         )
       ]),
     );
+  });
   }
-}
+  }
+

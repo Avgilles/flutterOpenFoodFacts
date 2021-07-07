@@ -56,8 +56,11 @@ class _NavTabState extends State<NavTab> {
       child: BlocBuilder<ProductBloc, ProductState>(
           builder: (BuildContext context, ProductState state) {
             if (state.product == null) {
-              return Center(
-                  child: CircularProgressIndicator()
+              return Container(
+                color: AppColors.white,
+                child: Center(
+                    child: CircularProgressIndicator()
+                ),
               );
             } else {
               return Theme(
@@ -163,7 +166,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         picture: apiGetProductResponse.response!.picture,
         altName: apiGetProductResponse.response!.altName,
         quantity: apiGetProductResponse.response!.quantity,
-        nutriScore: ProductNutriscore.A,
+        manufacturingCountries: apiGetProductResponse.response!.manufacturingCountries,
+        nutriScore: apiGetProductResponse.response!.nutriScore,
         // ecoScore: apiGetProductResponse.response!.ecoScore,
       ));
     }

@@ -1,4 +1,6 @@
 
+import 'network/api_product.dart';
+
 class Product {
   final String barcode;
   final String? name;
@@ -7,7 +9,7 @@ class Product {
   final String? quantity;
   final List<String>? brands;
   final List<String>? manufacturingCountries;
-  final ProductNutriscore? nutriScore;
+  final APIProductNutriscore? nutriScore;
   final ProductNovaScore? novaScore;
   final ProductEcoScore? ecoScore;
   final List<String>? ingredients;

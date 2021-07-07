@@ -12,7 +12,7 @@ class ImgTopDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductBloc, ProductState>(
         builder: (BuildContext context, ProductState state) {
-          state.product!.nutriScore;
+          // state.product!.nutriScore;
           return FractionallySizedBox(
             widthFactor: 1,
             child: Stack(
@@ -60,7 +60,7 @@ class ImgTopDetail extends StatelessWidget {
                         ),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: Text(state.product!.brands!.join(),
+                          child: Text(state.product!.brands!.join(','),
                               style: TextStyle(
                                   fontFamily: 'Avenir',
                                   color: AppColors.gray2,
