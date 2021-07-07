@@ -84,6 +84,6 @@ class NutrientLevels {
 
 enum ProductNutriscore { A, B, C, D, E }
 
-enum ProductNovaScore { Group1, Group2, Group3, Group4 }
+enum ProductNovaScore { group1, group2, group3, group4 }
 
 enum ProductEcoScore { A, B, C, D, E }

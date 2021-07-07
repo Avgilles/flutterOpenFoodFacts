@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yuka/layouts/navigator/navigator.dart';
 import 'package:yuka/res/app_color.dart';
-import 'package:yuka/res/app_images.dart';
-
-import 'bloc_product.dart';
 
 class ImgTopDetail extends StatelessWidget {
   const ImgTopDetail({
@@ -19,8 +17,8 @@ class ImgTopDetail extends StatelessWidget {
             widthFactor: 1,
             child: Stack(
               children: <Widget>[
-                Image.asset(
-                  AppImages.spaghetti,
+                Image.network(
+                  state.product!.picture!,
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: 400.0,
@@ -62,7 +60,7 @@ class ImgTopDetail extends StatelessWidget {
                         ),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: Text('test',
+                          child: Text(state.product!.brands!.join(),
                               style: TextStyle(
                                   fontFamily: 'Avenir',
                                   color: AppColors.gray2,
@@ -79,7 +77,7 @@ class ImgTopDetail extends StatelessWidget {
                         ),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: Text('Pate bolo incroyable ptn',
+                          child: Text(state.product!.altName!,
                               style: TextStyle(
                                   fontFamily: 'Avenir',
                                   color: AppColors.gray3,

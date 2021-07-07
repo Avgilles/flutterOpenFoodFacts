@@ -134,10 +134,10 @@ const _$APIProductEcoScoreEnumMap = {
 };
 
 const _$APIProductNovaScoreEnumMap = {
-  APIProductNovaScore.Group1: 'Group1',
-  APIProductNovaScore.Group2: 'Group2',
-  APIProductNovaScore.Group3: 'Group3',
-  APIProductNovaScore.Group4: 'Group4',
+  APIProductNovaScore.group1: 'group1',
+  APIProductNovaScore.group2: 'group2',
+  APIProductNovaScore.group3: 'group3',
+  APIProductNovaScore.group4: 'group4',
 };
 
 APIProductIngredients _$APIProductIngredientsFromJson(

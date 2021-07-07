@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yuka/components/bloc_product.dart';
 import 'package:yuka/components/detail_img_top.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
+
+import 'navigator/navigator.dart';
 
 // import '../product.dart';
 

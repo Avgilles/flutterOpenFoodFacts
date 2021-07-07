@@ -4,8 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yuka/network/api_product.dart';
 import 'package:yuka/network/network_api.dart';
-import 'package:yuka/network/network_product.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
 
@@ -46,10 +46,10 @@ class _NavTabState extends State<NavTab> {
     Color primaryColor = Theme.of(context).primaryColor;
 
     return BlocProvider<ProductBloc>(
-      create: (_){
-        ProductBloc bloc = ProductBloc();
-        bloc.fetchProduct('5000159484695');
-        return bloc;
+      create:(_) {
+        ProductBloc productBloc = ProductBloc();
+        productBloc.fetchProduct('5000159484695');
+        return productBloc;
       },
       child: Theme(
           data: Theme.of(context).copyWith(
@@ -133,7 +133,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     if (event is FetchProductEvent) {
       String barcode = event.barcode;
 
-      NetworkProduct networkProduct = await OpenFoodFactsAPI(
+      // NetworkProduct networkProduct = await OpenFoodFactsAPI(
+      //   Dio(),
+      //   baseUrl: 'https://api.formation-android.fr/v2/',
+      // ).findProduct(barcode: barcode);
+
+      APIGetProductResponse apiGetProductResponse = await OpenFoodFactsAPI(
         Dio(),
         baseUrl: 'https://api.formation-android.fr/v2/',
       ).findProduct(barcode: barcode);
@@ -141,9 +146,13 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       // Requête
       yield ProductAvailableState(Product(
           barcode: barcode,
-          name: networkProduct.response!.name,
-          brands: <String>['Cassegrain'],
-          nutriScore: ProductNutriscore.A
+          name: apiGetProductResponse.response!.name,
+          brands: apiGetProductResponse.response!.brands,
+          picture: apiGetProductResponse.response!.picture,
+          altName: apiGetProductResponse.response!.altName,
+          quantity: apiGetProductResponse.response!.quantity,
+          nutriScore: ProductNutriscore.A,
+          // ecoScore: apiGetProductResponse.response!.ecoScore,
       ));
     }
   }

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
-import 'network_product.dart';
+import 'api_product.dart';
 
 part 'network_api.g.dart';
 
@@ -12,7 +12,7 @@ abstract class OpenFoodFactsAPI {
 
 
   @GET('/getProduct')
-  Future<NetworkProduct> findProduct(
+  Future<APIGetProductResponse> findProduct(
       {@Query('barcode') required String barcode, CancelToken? token});
 }
 

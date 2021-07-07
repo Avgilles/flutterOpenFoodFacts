@@ -76,13 +76,13 @@ APIProductNovaScore? extractNovaScore(Object res) {
   if (res is int) {
     switch (res) {
       case 1:
-        return APIProductNovaScore.Group1;
+        return APIProductNovaScore.group1;
       case 2:
-        return APIProductNovaScore.Group2;
+        return APIProductNovaScore.group2;
       case 3:
-        return APIProductNovaScore.Group3;
+        return APIProductNovaScore.group3;
       case 4:
-        return APIProductNovaScore.Group4;
+        return APIProductNovaScore.group4;
     }
   }
 
@@ -93,7 +93,7 @@ APIProductAdditives? extractAdditives(Object res) {
   if (res is Map) {
     return APIProductAdditives(
         list: (res as Map<String, dynamic>).map<String, String>(
-                (String key, dynamic value) => MapEntry(key, value.toString())));
+                (String key, dynamic value) => MapEntry<String, String>(key, value.toString())));
   } else {
     return null;
   }
@@ -269,7 +269,7 @@ D,
 E
 }
 
-enum APIProductNovaScore { Group1, Group2, Group3, Group4 }
+enum APIProductNovaScore { group1, group2, group3, group4 }
 
 enum APIProductEcoScore {
 @JsonValue('A')
