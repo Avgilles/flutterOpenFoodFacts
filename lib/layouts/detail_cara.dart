@@ -122,7 +122,7 @@ class DetailNutri extends StatelessWidget {
                                 ),
                                 Expanded(
                                   flex: 45,
-                                  child: Text('Matière grasse / lipides ',
+                                  child: Text('Acides gras saturé ',
                                       style: TextStyle(
                                           fontSize: 20.0,
                                           color: AppColors.blueDark)),
@@ -132,7 +132,7 @@ class DetailNutri extends StatelessWidget {
                                   child: Column(children: <Widget>[
                                     Align(
                                       alignment: Alignment.centerRight,
-                                      child: Text('0,8g',
+                                      child: Text('0,1g',
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               color: AppColors.nutriscoreA)),
@@ -183,7 +183,7 @@ class DetailNutri extends StatelessWidget {
                                 ),
                                 Expanded(
                                   flex: 45,
-                                  child: Text('Matière grasse / lipides ',
+                                  child: Text('Sucre',
                                       style: TextStyle(
                                           fontSize: 20.0,
                                           color: AppColors.blueDark)),
@@ -196,14 +196,14 @@ class DetailNutri extends StatelessWidget {
                                       child: Text('0,8g',
                                           style: TextStyle(
                                               fontSize: 20.0,
-                                              color: AppColors.nutriscoreA)),
+                                              color: AppColors.nutriscoreD)),
                                     ),
                                     Align(
                                       alignment: Alignment.centerRight,
                                       child: Text('Faible quantité',
                                           style: TextStyle(
                                               fontSize: 20.0,
-                                              color: AppColors.nutriscoreA)),
+                                              color: AppColors.nutriscoreD)),
                                     )
                                   ]),
                                 ),
@@ -244,7 +244,7 @@ class DetailNutri extends StatelessWidget {
                                 ),
                                 Expanded(
                                   flex: 45,
-                                  child: Text('Matière grasse / lipides ',
+                                  child: Text('Sel',
                                       style: TextStyle(
                                           fontSize: 20.0,
                                           color: AppColors.blueDark)),
@@ -257,14 +257,14 @@ class DetailNutri extends StatelessWidget {
                                       child: Text('0,8g',
                                           style: TextStyle(
                                               fontSize: 20.0,
-                                              color: AppColors.nutriscoreA)),
+                                              color: AppColors.nutriscoreE)),
                                     ),
                                     Align(
                                       alignment: Alignment.centerRight,
                                       child: Text('Faible quantité',
                                           style: TextStyle(
                                               fontSize: 20.0,
-                                              color: AppColors.nutriscoreA)),
+                                              color: AppColors.nutriscoreE)),
                                     )
                                   ]),
                                 ),

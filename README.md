@@ -1,6 +1,12 @@
-# yuka
 
-A new Flutter project.
+# clone of yuka
+
+
+![Demo vidéo](res/drawables/demo.gif "Image Title")
+
+A new Flutter project. 
+The data come from : 
+https://api.formation-android.fr/v2/getProduct?barcode=5000159484695  
 
 ## Getting Started
 
