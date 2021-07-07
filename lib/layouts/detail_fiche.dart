@@ -1,14 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuka/components/detail_bandeau.dart';
 import 'package:yuka/components/detail_button.dart';
 import 'package:yuka/components/detail_img_top.dart';
 import 'package:yuka/components/detail_realisation_data.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
-
-import 'navigator/navigator.dart';
 
 class DetailFiche extends StatelessWidget {
 
@@ -46,20 +43,7 @@ class DetailFiche extends StatelessWidget {
                   ))
             ],
           ),
-          body: BlocProvider<ProductBloc>(
-            create:(_) {
-              ProductBloc productBloc = ProductBloc();
-              productBloc.fetchProduct('5000159484695');
-              return productBloc;
-            },
-            child:BlocBuilder<ProductBloc, ProductState>(
-                builder: (BuildContext context, ProductState state){
-                  if(state.product == null) {
-                    return Center(
-                      child: CircularProgressIndicator()
-                    );
-                  } else {
-                    return SingleChildScrollView(
+          body: SingleChildScrollView(
                       child: Container(
                           color: AppColors.white,
                           child: Column(
@@ -70,11 +54,8 @@ class DetailFiche extends StatelessWidget {
                               ButtonDetail(),
                             ],
                           )),
-                    );
-                  }
-                }
-              ),
-          ),
+                    )
+
         ));
   }
 }

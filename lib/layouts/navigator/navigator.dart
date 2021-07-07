@@ -43,59 +43,71 @@ class _NavTabState extends State<NavTab> {
 
   @override
   Widget build(BuildContext context) {
-    Color primaryColor = Theme.of(context).primaryColor;
+    Color primaryColor = Theme
+        .of(context)
+        .primaryColor;
 
     return BlocProvider<ProductBloc>(
-      create:(_) {
+      create: (_) {
         ProductBloc productBloc = ProductBloc();
         productBloc.fetchProduct('5000159484695');
         return productBloc;
       },
-      child: Theme(
-          data: Theme.of(context).copyWith(
-            appBarTheme: AppBarTheme(
-              backgroundColor: AppColors.white,
-              elevation: 0.0,
-              centerTitle: false,
-              iconTheme: IconTheme.of(context).copyWith(
-                color: primaryColor,
-              ),
-            ),
-          ),
-          child: Scaffold(
-            body: Center(
-              child: _widgetOptions.elementAt(_selectedIndex),
-            ),
-            bottomNavigationBar: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(AppIcons.tabBarcode),
-                  label: 'Fiche',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(AppIcons.tabFridge),
-                  label: 'Carateristiques',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(AppIcons.tabNutrition),
-                  label: 'Nutrition',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(AppIcons.tabArray),
-                  label: 'Tableau',
-                ),
-              ],
-              currentIndex: _selectedIndex,
-              selectedItemColor: AppColors.blue,
-              onTap: _onItemTapped,
-            ),
-          )),
+      child: BlocBuilder<ProductBloc, ProductState>(
+          builder: (BuildContext context, ProductState state) {
+            if (state.product == null) {
+              return Center(
+                  child: CircularProgressIndicator()
+              );
+            } else {
+              return Theme(
+                  data: Theme.of(context).copyWith(
+                    appBarTheme: AppBarTheme(
+                      backgroundColor: AppColors.white,
+                      elevation: 0.0,
+                      centerTitle: false,
+                      iconTheme: IconTheme.of(context).copyWith(
+                        color: primaryColor,
+                      ),
+                    ),
+                  ),
+                  child: Scaffold(
+                    body: Center(
+                      child: _widgetOptions.elementAt(_selectedIndex),
+                    ),
+                    bottomNavigationBar: BottomNavigationBar(
+                      type: BottomNavigationBarType.fixed,
+                      items: const <BottomNavigationBarItem>[
+                        BottomNavigationBarItem(
+                          icon: Icon(AppIcons.tabBarcode),
+                          label: 'Fiche',
+                        ),
+                        BottomNavigationBarItem(
+                          icon: Icon(AppIcons.tabFridge),
+                          label: 'Carateristiques',
+                        ),
+                        BottomNavigationBarItem(
+                          icon: Icon(AppIcons.tabNutrition),
+                          label: 'Nutrition',
+                        ),
+                        BottomNavigationBarItem(
+                          icon: Icon(AppIcons.tabArray),
+                          label: 'Tableau',
+                        ),
+                      ],
+                      currentIndex: _selectedIndex,
+                      selectedItemColor: AppColors.blue,
+                      onTap: _onItemTapped,
+                    ),
+                  ));
+          }
+          }
+      ),
     );
   }
 }
 
-enum ProductDetailsCurrentTab {summary, info, nutrition, nutritionalValues}
+enum ProductDetailsCurrentTab { summary, info, nutrition, nutritionalValues }
 
 abstract class ProductEvent {}
 
@@ -145,14 +157,14 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       // println(networkProduct.response?.manufacturingCountries);
       // Requête
       yield ProductAvailableState(Product(
-          barcode: barcode,
-          name: apiGetProductResponse.response!.name,
-          brands: apiGetProductResponse.response!.brands,
-          picture: apiGetProductResponse.response!.picture,
-          altName: apiGetProductResponse.response!.altName,
-          quantity: apiGetProductResponse.response!.quantity,
-          nutriScore: ProductNutriscore.A,
-          // ecoScore: apiGetProductResponse.response!.ecoScore,
+        barcode: barcode,
+        name: apiGetProductResponse.response!.name,
+        brands: apiGetProductResponse.response!.brands,
+        picture: apiGetProductResponse.response!.picture,
+        altName: apiGetProductResponse.response!.altName,
+        quantity: apiGetProductResponse.response!.quantity,
+        nutriScore: ProductNutriscore.A,
+        // ecoScore: apiGetProductResponse.response!.ecoScore,
       ));
     }
   }

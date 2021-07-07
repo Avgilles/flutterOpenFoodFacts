@@ -1,14 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuka/components/detail_img_top.dart';
 import 'package:yuka/res/app_color.dart';
 import 'package:yuka/res/app_icons.dart';
-
-import 'navigator/navigator.dart';
-
-// import '../product.dart';
-
 
 class DetailCara1 extends StatelessWidget {
 
@@ -47,20 +41,7 @@ class DetailCara1 extends StatelessWidget {
                   ))
             ],
           ),
-          body: BlocProvider<ProductBloc>(
-            create:(_) {
-              ProductBloc productBloc = ProductBloc();
-              productBloc.fetchProduct('5000159484695');
-              return productBloc;
-            },
-            child:BlocBuilder<ProductBloc, ProductState>(
-                builder: (BuildContext context, ProductState state){
-                  if(state.product == null) {
-                    return Center(
-                        child: CircularProgressIndicator()
-                    );
-                  } else {
-                    return SingleChildScrollView(
+          body: SingleChildScrollView(
                       child: Container(
                           color: AppColors.white,
                           child: Column(
@@ -253,29 +234,8 @@ class DetailCara1 extends StatelessWidget {
                               ]),
                             ],
                           )),
-                    );
-                  }
-                }
-            ),
-          ),
+                    )
+
         ));
   }
 }
-/*
-class ProductHolder extends InheritedWidget {
-  final Product product;
-
-  const ProductHolder({
-    required this.product,
-    required Widget child,
-    Key? key,
-  }) : super(key: key, child: child);
-
-  static ProductHolder? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<ProductHolder>();
-  }
-
-  @override
-  bool updateShouldNotify(ProductHolder old) => product != old.product;
-}
-*/

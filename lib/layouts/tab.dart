@@ -43,23 +43,8 @@ class TabDetail extends StatelessWidget {
                   ))
             ],
           ),
-          body: BlocProvider<ProductBloc>(
-            create: (_) {
-              ProductBloc productBloc = ProductBloc();
-              productBloc.fetchProduct('5000159484695');
-              return productBloc;
-            },
-            child: BlocBuilder<ProductBloc, ProductState>(
-                builder: (BuildContext context, ProductState state) {
-              if (state.product == null) {
-                return Center(child: CircularProgressIndicator());
-              } else {
-                return SingleChildScrollView(
-                  child: TabWidget(),
-                );
-              }
-            }),
-          ),
+          body: TabWidget(),
+
         ));
   }
 }
