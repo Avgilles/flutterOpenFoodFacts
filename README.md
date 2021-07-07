@@ -2,7 +2,7 @@
 # clone of yuka
 
 
-![Demo vidéo](res/drawables/demo.gif "Image Title")
+![Demo vidéo](res/drawables/demo.gif "Demo vidéo")
 
 A new Flutter project. 
 The data come from : 
